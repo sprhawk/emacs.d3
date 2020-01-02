@@ -86,6 +86,7 @@
    (quote
     ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
  '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(inhibit-startup-screen t)
  '(magit-diff-use-overlays nil)
  '(nrepl-message-colors
    (quote
@@ -116,15 +117,15 @@
 (setq inferior-lisp-program "sbcl")
 
 
-(use-package rust
+(use-package rust-mode
   :ensure t
   :init
-  ((setq rust-format-on-save t))
-  :hook
-  ((rust-mode . racer-mode)
-   (racer-mode . eldoc-mode)
-   (racer-mode . company-mode)
-   )
+  (setq rust-format-on-save t)
+  ;; :hook
+  ;; ((rust-mode . racer-mode)
+  ;;  (racer-mode . eldoc-mode)
+  ;;  (racer-mode . company-mode)
+  ;;  )
   :mode ("\\.rs\\'" ))
 
 (use-package vue-mode
