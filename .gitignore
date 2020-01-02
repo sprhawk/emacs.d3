@@ -1,0 +1,8 @@
+*~
+**/*.elc
+**/*.pyc
+*.dat
+elpa
+\#*\#
+elpy
+transient
