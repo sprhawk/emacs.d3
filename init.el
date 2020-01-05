@@ -169,6 +169,12 @@
   :hook ((julia-mode julia-repl-mode))
   )
 
+(use-package slime
+  :ensure t
+  :init 
+  (setq inferior-lisp-program "/home/hongbo/.local/bin/sbcl")
+  (setq slime-contribs '(slime-fancy))
+  )
 ;; (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
 ;; (require 'julia-repl)
 ;; (add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
