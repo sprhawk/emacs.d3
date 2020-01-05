@@ -245,3 +245,4 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(set-face-foreground 'minibuffer-prompt "blue")
