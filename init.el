@@ -26,6 +26,12 @@
 
 (require 'use-package)
 
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
+;; (global-set-key (kbd "C-x g") 'magit-status)
+
+  
 (use-package elpy
   :ensure t
   :defer t
@@ -247,7 +253,5 @@
 (when (executable-find "ipython")
   (setq python-shell-interpreter "ipython")
   (setq python-shell-interpreter-args "-i --simple-prompt"))
-
-(global-set-key (kbd "C-x g") 'magit-status)
 
 (set-face-foreground 'minibuffer-prompt "blue")
