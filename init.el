@@ -26,6 +26,12 @@
 
 (require 'use-package)
 
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
+;; (global-set-key (kbd "C-x g") 'magit-status)
+
+  
 (use-package elpy
   :ensure t
   :defer t
@@ -173,8 +179,9 @@
   :ensure t
   :init 
   (setq inferior-lisp-program "/home/hongbo/.local/bin/sbcl")
-  (setq slime-contribs '(slime-fancy))
-  )
+  :config
+  (add-to-list 'slime-contribs 'slime-fancy))
+
 ;; (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
 ;; (require 'julia-repl)
 ;; (add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
@@ -248,7 +255,5 @@
 (when (executable-find "ipython")
   (setq python-shell-interpreter "ipython")
   (setq python-shell-interpreter-args "-i --simple-prompt"))
-
-(global-set-key (kbd "C-x g") 'magit-status)
 
 (set-face-foreground 'minibuffer-prompt "blue")
