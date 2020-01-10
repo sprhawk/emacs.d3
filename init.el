@@ -120,8 +120,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(setq inferior-lisp-program "sbcl")
-
 
 (use-package rust-mode
   :ensure t
@@ -178,7 +176,7 @@
 (use-package slime
   :ensure t
   :init 
-  (setq inferior-lisp-program "/home/hongbo/.local/bin/sbcl")
+  (setq inferior-lisp-program "/usr/local/bin/sbcl")
   :config
   (add-to-list 'slime-contribs 'slime-fancy))
 
