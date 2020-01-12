@@ -122,7 +122,6 @@
  )
 ;; (setq inferior-lisp-program "sbcl")
 
-
 (use-package rust-mode
   :ensure t
   :init
