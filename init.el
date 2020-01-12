@@ -120,7 +120,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(setq inferior-lisp-program "sbcl")
+;; (setq inferior-lisp-program "sbcl")
 
 
 (use-package rust-mode
@@ -178,14 +178,18 @@
 (use-package slime
   :ensure t
   :init 
-  (setq inferior-lisp-program "/home/hongbo/.local/bin/sbcl")
+  (setq inferior-lisp-program "sbcl")
   :config
-  (add-to-list 'slime-contribs 'slime-fancy))
+  (add-to-list 'slime-contribs 'slime-fancy)
+  :hook
+  (lisp-mode . prettify-symbols-mode))
 
 ;; (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
 ;; (require 'julia-repl)
 ;; (add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
 
+
+(add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
 
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
 ;; (add-hook 'elpy-mode-hook  ;; C-c C-/ is interpreted in emacs as C-c C-_
