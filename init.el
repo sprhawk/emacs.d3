@@ -174,6 +174,7 @@
   :hook ((julia-mode julia-repl-mode))
   )
 
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
 (use-package slime
   :ensure t
   :init 
@@ -181,7 +182,8 @@
   :config
   (add-to-list 'slime-contribs 'slime-fancy)
   :hook
-  (lisp-mode . prettify-symbols-mode))
+  (lisp-mode . prettify-symbols-mode)
+  (lisp-mode . company-mode))
 
 ;; (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
 ;; (require 'julia-repl)
@@ -189,6 +191,7 @@
 
 
 (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
+(add-hook 'emacs-lisp-mode-hook 'company-mode)
 
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
 ;; (add-hook 'elpy-mode-hook  ;; C-c C-/ is interpreted in emacs as C-c C-_
