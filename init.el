@@ -174,11 +174,19 @@
   :hook ((julia-mode julia-repl-mode))
   )
 
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(use-package lispy
+  :ensure t
+  :hook
+  (lisp-mode . lispy-mode)
+  (emacs-lisp-mode . lispy-mode))
+
 (use-package slime
   :ensure t
   :init 
   (setq inferior-lisp-program "sbcl")
+  ;; may need to check existent of slime-helper
+  (load (expand-file-name "~/quicklisp/slime-helper.el"))
+
   :config
   (add-to-list 'slime-contribs 'slime-fancy)
   :hook
