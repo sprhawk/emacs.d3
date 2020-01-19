@@ -171,7 +171,7 @@
   )
 (use-package julia-repl
   :ensure t
-  :hook ((julia-mode julia-repl-mode))
+  :hook (julia-mode . julia-repl-mode) 
   )
 
 (use-package lispy
