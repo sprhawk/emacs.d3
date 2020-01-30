@@ -45,10 +45,10 @@
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-
-(use-package ensime
-	     :ensure t
-	     :pin melpa-stable)
+;; retired use Metals
+;; (use-package ensime
+;; 	     :ensure t
+;; 	     :pin melpa-stable)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
