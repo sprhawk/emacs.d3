@@ -20,9 +20,9 @@
  package-archive-priorities '(("melpa" . 1)))
 
 (package-initialize)
-(when (not package-archive-contents)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
 
 (require 'use-package)
 
