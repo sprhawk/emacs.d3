@@ -210,6 +210,9 @@
 ;; (add-hook 'elpy-mode-hook  ;; C-c C-/ is interpreted in emacs as C-c C-_
 ;;           (lambda() (local-set-key (kbd "C-c C-_") #'comment-or-uncomment-region)))
 
+(add-hook 'lisp-mode-hook
+	  (lambda () (show-paren-mode 1)))
+
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
