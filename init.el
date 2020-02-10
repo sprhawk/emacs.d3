@@ -20,9 +20,9 @@
  package-archive-priorities '(("melpa" . 1)))
 
 (package-initialize)
-(when (not package-archive-contents)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
 
 (require 'use-package)
 
@@ -45,10 +45,10 @@
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-
-(use-package ensime
-	     :ensure t
-	     :pin melpa-stable)
+;; retired use Metals
+;; (use-package ensime
+;; 	     :ensure t
+;; 	     :pin melpa-stable)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -99,7 +99,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (afternoon-theme lispy rust-mode vue-mode octave-mode tide tidal julia-repl color-theme-sanityinc-tomorrow zenburn-theme tango-2-theme dracula-theme julia-mode web-mode jinja2-mode flycheck elpy realgud php-mode git scss-mode django-snippets django-mode sass-mode json-mode typescript-mode docker-compose-mode dockerfile-mode yaml-mode ensime ecb magit cargo company racer slime)))
+    (grip-mode afternoon-theme lispy rust-mode vue-mode octave-mode tide tidal julia-repl color-theme-sanityinc-tomorrow zenburn-theme tango-2-theme dracula-theme julia-mode web-mode jinja2-mode flycheck elpy realgud php-mode git scss-mode django-snippets django-mode sass-mode json-mode typescript-mode docker-compose-mode dockerfile-mode yaml-mode ensime ecb magit cargo company racer slime)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
@@ -197,6 +197,11 @@
   (lisp-mode . prettify-symbols-mode)
   (lisp-mode . company-mode))
 
+;; need to install grip
+(use-package grip-mode
+  :ensure t
+  :mode ("\\.md\\'"))
+
 ;; (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
 ;; (require 'julia-repl)
 ;; (add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
@@ -208,6 +213,9 @@
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
 ;; (add-hook 'elpy-mode-hook  ;; C-c C-/ is interpreted in emacs as C-c C-_
 ;;           (lambda() (local-set-key (kbd "C-c C-_") #'comment-or-uncomment-region)))
+
+(add-hook 'lisp-mode-hook
+	  (lambda () (show-paren-mode 1)))
 
 (defun setup-tide-mode ()
   (interactive)
