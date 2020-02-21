@@ -197,6 +197,11 @@
   (lisp-mode . prettify-symbols-mode)
   (lisp-mode . company-mode))
 
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.yaml\\'"
+         "\\.yml'\\'"))
+
 ;; need to install grip
 (use-package grip-mode
   :ensure t
