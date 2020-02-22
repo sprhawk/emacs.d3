@@ -121,6 +121,7 @@
  ;; If there is more than one, they won't work right.
  )
 (use-package afternoon-theme
+  :ensure t
   :config
   (load-theme 'afternoon t))
 
