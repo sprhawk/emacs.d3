@@ -190,7 +190,10 @@
   :init 
   (setq inferior-lisp-program "sbcl")
   ;; may need to check existent of slime-helper
-  (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  (let ((slime-helper-file "~/quicklisp/slime-helper.el"))
+    (if (file-exists-p slime-helper-file)
+        (load (expand-file-name slime-helper-file))))
+
 
   :config
   (add-to-list 'slime-contribs 'slime-fancy)
