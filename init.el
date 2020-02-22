@@ -224,7 +224,9 @@
 ;;           (lambda() (local-set-key (kbd "C-c C-_") #'comment-or-uncomment-region)))
 
 (add-hook 'lisp-mode-hook
-	  (lambda () (show-paren-mode 1)))
+	      (lambda () (show-paren-mode 1)))
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (show-paren-mode 1)))
 
 (defun setup-tide-mode ()
   (interactive)
