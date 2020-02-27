@@ -8,3 +8,4 @@ elpy
 transient
 session.*
 semanticdb
+.lsp-session*
