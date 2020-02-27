@@ -142,7 +142,9 @@
   :ensure t)
 
 (use-package rustic
-  :ensure t)
+  :ensure t
+  :bind (("C-c C-b" . 'rustic-cargo-build)
+         ("C-c C-k" . 'rustic-cargo-clean)))
 
 (use-package vue-mode
   :ensure t
