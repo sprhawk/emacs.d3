@@ -143,9 +143,12 @@
 
 (use-package rustic
   :ensure t
+  :init
+  (setq rustic-lsp-server 'rust-analyzer)
   :bind (("C-c C-b" . 'rustic-cargo-build)
          ("C-c C-k" . 'rustic-cargo-clean)
-         ("C-c C-r" . 'rustic-cargo-run)))
+         ("C-c C-r" . 'rustic-cargo-run)
+         ("C-c C-e" . 'lsp-rust-analyzer-expand-macro)))
 
 (use-package vue-mode
   :ensure t
