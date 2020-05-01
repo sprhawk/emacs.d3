@@ -36,14 +36,16 @@
   :ensure t
   :defer t
   :init
-  (advice-add 'python-mode :before 'elpy-enable))
+  (advice-add 'python-mode :before 'elpy-enable)
+  :config
+  (progn
+    (when (load "flycheck" nil t)
+      (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+      (add-hook 'elpy-mode-hook 'flycheck-mode))))
 
 ;; don't know how to enable flycheck-mode with above method, so enable right now
 ;; (elpy-enable)
 
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; retired use Metals
 ;; (use-package ensime
