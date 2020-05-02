@@ -161,11 +161,14 @@
   :ensure t
   :init
   (setq rustic-lsp-server 'rust-analyzer)
+  (setq rustic-format-on-save t)
+  ;; (setq rustic-lsp-format t)
   :hook
   (('rustic-mode . 'yas-minor-mode))
   :bind (("C-c C-b" . 'rustic-cargo-build)
          ("C-c C-k" . 'rustic-cargo-clean)
          ("C-c C-r" . 'rustic-cargo-run)
+         ("C-c C-f" . 'rustic-format-buffer)
          ("C-c C-e" . 'lsp-rust-analyzer-expand-macro)))
 
 (use-package vue-mode
