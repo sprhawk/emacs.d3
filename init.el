@@ -155,9 +155,13 @@
 (use-package company-lsp
   :ensure t
   :commands company-lsp)
+;; lsp-ui-doc will block some 
 (use-package lsp-ui
   :ensure t
-  :commands lsp-ui-mode)
+  :commands lsp-ui-mode
+  :init
+  (setq lsp-ui-doc-enable nil))
+
 (use-package ccls
   :ensure t
   :hook ((c-mode c++-mode objc-mode cuda-mode) .
