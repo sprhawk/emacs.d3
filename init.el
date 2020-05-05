@@ -155,12 +155,13 @@
 (use-package company-lsp
   :ensure t
   :commands company-lsp)
-;; lsp-ui-doc will block some 
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode
-  :init
-  (setq lsp-ui-doc-enable nil))
+;; lsp-ui-doc will block some
+;; lsp-ui is annoying
+;; (use-package lsp-ui
+;;   :ensure t
+;;   :commands lsp-ui-mode
+;;   :init
+;;   (setq lsp-ui-doc-enable nil))
 
 (use-package ccls
   :ensure t
@@ -175,11 +176,12 @@
   ;; (setq rustic-lsp-format t)
   :hook
   (('rustic-mode . 'yas-minor-mode))
-  :bind (("C-c C-b" . 'rustic-cargo-build)
-         ("C-c C-k" . 'rustic-cargo-clean)
-         ("C-c C-r" . 'rustic-cargo-run)
-         ("C-c C-f" . 'rustic-format-buffer)
-         ("C-c C-e" . 'lsp-rust-analyzer-expand-macro)))
+  ;; :bind (("C-c C-b" . 'rustic-cargo-build)
+  ;;        ("C-c C-k" . 'rustic-cargo-clean)
+  ;;        ("C-c C-r" . 'rustic-cargo-run)
+  ;;        ("C-c C-f" . 'rustic-format-buffer)
+  ;;        ("C-c C-e" . 'lsp-rust-analyzer-expand-macro))
+  )
 
 (use-package vue-mode
   :ensure t
