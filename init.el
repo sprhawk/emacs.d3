@@ -12,12 +12,12 @@
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 
-(setq
- package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                    ("org" . "http://orgmode.org/elpa/")
-                    ("melpa" . "http://melpa.org/packages/")
-                    ("melpa-stable" . "http://stable.melpa.org/packages/"))
- package-archive-priorities '(("melpa" . 1)))
+; (add-to-list
+; 'package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;                    ("org" . "http://orgmode.org/elpa/")
+;                    ("melpa" . "http://melpa.org/packages/")
+;                    ("melpa-stable" . "http://stable.melpa.org/packages/"))
+; package-archive-priorities '(("melpa" . 1)))
 
 (package-initialize)
 (unless (package-installed-p 'use-package)
@@ -101,7 +101,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (cmake-font-lock ccls lsp-ui company-lsp realgud-lldb lsp-mode rustic grip-mode afternoon-theme lispy rust-mode vue-mode octave-mode tide tidal julia-repl color-theme-sanityinc-tomorrow zenburn-theme tango-2-theme dracula-theme julia-mode web-mode jinja2-mode flycheck elpy realgud php-mode git scss-mode django-snippets django-mode sass-mode json-mode typescript-mode docker-compose-mode dockerfile-mode yaml-mode ensime ecb magit company racer slime)))
+    (cmake-font-lock ccls company-lsp realgud-lldb lsp-mode rustic grip-mode afternoon-theme lispy rust-mode vue-mode octave-mode tide tidal julia-repl color-theme-sanityinc-tomorrow zenburn-theme tango-2-theme dracula-theme julia-mode web-mode jinja2-mode flycheck elpy realgud php-mode git scss-mode django-snippets django-mode sass-mode json-mode typescript-mode docker-compose-mode dockerfile-mode yaml-mode ensime ecb magit company racer slime)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
@@ -289,6 +289,9 @@
 
 (setq company-tooltip-align-annotations t)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+(use-package tide
+  :ensure t)
 
 (global-set-key (kbd "C-c C-_") 'comment-or-uncomment-region)
 
