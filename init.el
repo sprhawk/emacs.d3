@@ -185,7 +185,8 @@
 
 (use-package go-mode
   :ensure t
-  :mode ("\\.go$"))
+  :mode ("\\.go$")
+  :hook ((before-save . gofmt-before-save)))
 
 (use-package vue-mode
   :ensure t
