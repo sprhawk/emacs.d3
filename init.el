@@ -101,7 +101,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (cmake-font-lock ccls company-lsp realgud-lldb lsp-mode rustic grip-mode afternoon-theme lispy rust-mode vue-mode octave-mode tide tidal julia-repl color-theme-sanityinc-tomorrow zenburn-theme tango-2-theme dracula-theme julia-mode web-mode jinja2-mode flycheck elpy realgud php-mode git scss-mode django-snippets django-mode sass-mode json-mode typescript-mode docker-compose-mode dockerfile-mode yaml-mode ensime ecb magit company racer slime)))
+    (go-mode cmake-font-lock ccls company-lsp realgud-lldb lsp-mode rustic grip-mode afternoon-theme lispy rust-mode vue-mode octave-mode tide tidal julia-repl color-theme-sanityinc-tomorrow zenburn-theme tango-2-theme dracula-theme julia-mode web-mode jinja2-mode flycheck elpy realgud php-mode git scss-mode django-snippets django-mode sass-mode json-mode typescript-mode docker-compose-mode dockerfile-mode yaml-mode ensime ecb magit company racer slime)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
@@ -182,6 +182,10 @@
   ;;        ("C-c C-f" . 'rustic-format-buffer)
   ;;        ("C-c C-e" . 'lsp-rust-analyzer-expand-macro))
   )
+
+(use-package go-mode
+  :ensure t
+  :mode ("\\.go$"))
 
 (use-package vue-mode
   :ensure t
