@@ -189,7 +189,11 @@
 
 (use-package vue-mode
   :ensure t
-  :mode ("\\.vue$" ))
+  :mode ("\\.vue$" )
+  ;; fix for https://github.com/AdamNiederer/vue-mode/issues/74#issuecomment-528560608
+  :config
+  (setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+  (setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil))))
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
@@ -282,20 +286,12 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda () (show-paren-mode 1)))
 
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (company-mode +1))
-
-(setq company-tooltip-align-annotations t)
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-
 (use-package tide
-  :ensure t)
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
 
 (global-set-key (kbd "C-c C-_") 'comment-or-uncomment-region)
 
