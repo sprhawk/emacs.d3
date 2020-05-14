@@ -84,7 +84,12 @@
   :ensure t
   :commands (lsp lsp-deferred)
   :hook
-  (go-mode . lsp-deferred))
+  (go-mode . lsp-deferred)
+  ;; (typescript-mode . lsp-deferred)
+  )
+
+(use-package typescript-mode
+  :ensure t)
 
 (use-package company
   :ensure t
@@ -135,6 +140,24 @@
   (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
   :hook
   (('go-mode . 'yas-minor-mode)))
+
+(use-package graphql-mode
+  :ensure t)
+
+(use-package mmm-mode
+  :ensure t
+  :after (graphql-mode) 
+  :config
+  ;; https://emacs.stackexchange.com/questions/37918/how-to-highlight-graphql-template-literals-gql-in-jsx-files
+  (mmm-add-classes '((js-graphql
+                      :submode graphql-mode
+                      :face mmm-declaration-submode-face
+                      :front "[^a-zA-Z]gql`[\n\r]*"
+                      :back "`$")))
+  (mmm-add-mode-ext-class 'js-mode nil 'js-graphql)
+  (setq mmm-global-mode 'maybe)
+  (setq mmm-submode-decoration-level 0)
+  )
 
 (use-package vue-mode
   :ensure t
@@ -238,6 +261,22 @@
 (use-package tide
   :ensure t
   :after (typescript-mode company flycheck)
+  :config
+  (defun my-tide-setup-hook ()
+    (tide-setup)
+    (tide-hl-identifier-mode +1)
+    (el-mode)
+    (flycheck-mode)
+
+    (prettier-js-mode)
+
+    (set (make-local-variable 'company-backends)
+         '((company-tide company-files :with company-yasnippet)
+           (company-dabbrev-code company-dabbrev))))
+  (setq typescript-indent-level 2)
+  (flycheck-add-next-checker 'typescript-tide
+                             'typescript-tslint)
+  (setq tide-completion-detailed t)
   :hook ((typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
          (before-save . tide-format-before-save)))
@@ -245,8 +284,6 @@
 (use-package dockerfile-mode
   :ensure t)
 (use-package docker-compose-mode
-  :ensure t)
-(use-package graphql-mode
   :ensure t)
 
 ;; (setq jedi:environment-root "jedi")
