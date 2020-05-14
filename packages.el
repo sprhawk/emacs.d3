@@ -146,18 +146,16 @@
 
 (use-package mmm-mode
   :ensure t
-  :after (graphql-mode) 
+  :init
+  (setq mmm-global-mode 'maybe)
   :config
   ;; https://emacs.stackexchange.com/questions/37918/how-to-highlight-graphql-template-literals-gql-in-jsx-files
-  (mmm-add-classes '((js-graphql
+  (mmm-add-classes '((graphql-tag
                       :submode graphql-mode
                       :face mmm-declaration-submode-face
-                      :front "[^a-zA-Z]gql`[\n\r]*"
-                      :back "`$")))
-  (mmm-add-mode-ext-class 'js-mode nil 'js-graphql)
-  (setq mmm-global-mode 'maybe)
-  (setq mmm-submode-decoration-level 0)
-  )
+                      :front "[^a-zA-Z]gql`"
+                      :back "`")))
+  (mmm-add-mode-ext-class 'vue-mode nil 'graphql-tag))
 
 (use-package vue-mode
   :ensure t
