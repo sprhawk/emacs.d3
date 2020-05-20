@@ -110,8 +110,10 @@
 
 (use-package ccls
   :ensure t
-  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-         (lambda () (require 'ccls) (lsp))))
+  :hook
+  (((c-mode c++-mode objc-mode cuda-mode) .
+    (lambda () (require 'ccls) (lsp)))
+   ((c-mode c++-mode objc-mode cuda-mode) . yas-minor-mode)))
 
 (use-package rustic
   :ensure t
