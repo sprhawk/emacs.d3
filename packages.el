@@ -1,20 +1,26 @@
 (require 'package)
-(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (proto (if no-ssl "http" "https")))
-  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
-  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  ;; (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
-  (when (< emacs-major-version 24)
-    ;; For important compatibility libraries like cl-lib
-    (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 
-; (add-to-list
-; 'package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;                    ("org" . "http://orgmode.org/elpa/")
-;                    ("melpa" . "http://melpa.org/packages/")
-;                    ("melpa-stable" . "http://stable.melpa.org/packages/"))
-; package-archive-priorities '(("melpa" . 1)))
+;; need to updateGPG keys used by ELPA package manager
+;; refer to: https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html
+;; Mx package-install RET gnu-elpa-keyring-update
+;; or if keys are already too old
+;; gpg --homedir ~/.emacs.d/elpa/gnupg --receive-keys 066DAFCB81E42C40
+
+;; (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+;;                     (not (gnutls-available-p))))
+;;        (proto (if no-ssl "http" "https")))
+;;   (setq package-archives nil)
+;;   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+;;   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+;;   ;; (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+;;   (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))
+;;   )
+
+(setq
+ package-archives '(("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                    ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+                    ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                    ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")))
 
 (package-initialize)
 (unless (package-installed-p 'use-package)
@@ -114,6 +120,13 @@
   (((c-mode c++-mode objc-mode cuda-mode) .
     (lambda () (require 'ccls) (lsp)))
    ((c-mode c++-mode objc-mode cuda-mode) . yas-minor-mode)))
+
+;; install rust-analyser
+;; rustup component add rust-src
+;; build from source
+;; git clone https://github.com/rust-analyzer/rust-analyzer.git
+;; cd rust-analyzer
+;; cargo xtask install
 
 (use-package rustic
   :ensure t
@@ -240,6 +253,7 @@
   :ensure t)
 
 (use-package realgud-lldb
+  :after (realgud)
   :ensure t)
 ;; (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
 ;; (require 'julia-repl)
