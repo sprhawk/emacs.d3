@@ -299,6 +299,9 @@
   :ensure t)
 (use-package docker-compose-mode
   :ensure t)
+(use-package docker
+  :ensure t)
+
 (use-package protobuf-mode
   :ensure t)
 
