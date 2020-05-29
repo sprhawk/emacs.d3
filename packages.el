@@ -301,6 +301,10 @@
   :ensure t)
 (use-package protobuf-mode
   :ensure t)
+
+(use-package bitbake
+  :ensure t)
+
 ;; (setq jedi:environment-root "jedi")
 ;; (setq jedi:environment-virtualenv
 ;;       (append python-environment-virtualenv
