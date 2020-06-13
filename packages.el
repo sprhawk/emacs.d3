@@ -29,6 +29,17 @@
 
 (require 'use-package)
 
+(use-package quelpa
+  :ensure t
+  :init
+  (setq quelpa-update-melpa-p nil))
+
+(quelpa
+ '(quelpa-use-package
+   :fetcher git
+   :url "https://github.com/quelpa/quelpa-use-package.git"))
+(require 'quelpa-use-package)
+
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status))
@@ -92,6 +103,7 @@
   :hook
   (go-mode . lsp-deferred)
   ;; (typescript-mode . lsp-deferred)
+  (julia-mode . lsp-deferred)
   )
 
 (use-package typescript-mode
@@ -207,11 +219,20 @@
             (lambda() (local-set-key (kbd "C-c /") #'web-mode-element-close)))
   )
 
+(use-package lsp-julia
+  :quelpa (lsp-julia
+           ;; :fetcher github
+           ;; :repo "non-Jedi/lsp-julia"
+           ;; :files (:defaults "languageserver")
+           )
+  ;; :init
+  ;; (setq lsp-julia-package-dir nil)
+  )
 
 (use-package julia-mode
   :ensure t
-  :mode ("\\.jl\\'")
-  )
+  :mode ("\\.jl\\'"))
+
 (use-package julia-repl
   :ensure t
   :hook (julia-mode . julia-repl-mode) 
