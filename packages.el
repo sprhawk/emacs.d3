@@ -240,9 +240,20 @@
   ;; (setq lsp-julia-package-dir nil)
   )
 
+;; ref: https://tamaspapp.eu/post/emacs-julia-customizations/
+(defun customize-julia-mode ()
+  "Customize julia-mode"
+  (interactive)
+  (font-lock-add-keywords nil
+                          '(("\\<\\(FIXME\\|TODO\\|QUESTION\\|NOTE\\)"
+                             1 font-lock-warning-face t)))
+  )
+
 (use-package julia-mode
   :ensure t
-  :mode ("\\.jl\\'"))
+  :mode ("\\.jl\\'")
+  :hook
+  (julia-mode . customize-julia-mode))
 
 (use-package julia-repl
   :ensure t
