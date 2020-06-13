@@ -220,6 +220,8 @@
             (lambda() (local-set-key (kbd "C-c /") #'web-mode-element-close)))
   )
 
+;; as creator of julia-repl commented (https://github.com/gcv/julia-snail/issues/1#issuecomment-597038660)
+;; julia-repl shall be replaced by something   
 ;; Julia-snail usage is not tested yet
 ;; (use-package vterm
 ;;   :ensure t)
