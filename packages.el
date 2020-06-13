@@ -220,6 +220,14 @@
             (lambda() (local-set-key (kbd "C-c /") #'web-mode-element-close)))
   )
 
+;; Julia-snail usage is not tested yet
+;; (use-package vterm
+;;   :ensure t)
+;; (use-package julia-snail
+;;   :ensure t
+;;   :hook
+;;   (julia-mode . julia-snail-mode))
+
 (use-package lsp-julia
   :quelpa (lsp-julia
            ;; :fetcher github
