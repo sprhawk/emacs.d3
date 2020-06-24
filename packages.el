@@ -103,8 +103,14 @@
   :commands (lsp lsp-deferred)
   :hook
   (go-mode . lsp-deferred)
-  ;; (typescript-mode . lsp-deferred)
   (julia-mode . lsp-deferred)
+  ;; npm i -g typescript-language-server
+  (typescript-mode . lsp-deferred)
+  ;; yarn add -D eslint eslint-plugin-vue@next
+  ;; yarn eslint --init
+  ;; yarn add -D eslint-plugin-vue@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest
+  ;; still not working with vue-language-server
+  ;; (vue-mode . lsp-deferred)
   )
 
 (use-package typescript-mode
