@@ -47,6 +47,8 @@
     ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
  '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
  '(inhibit-startup-screen t)
+ '(lsp-vetur-server-command (quote ("yarn vls")))
+ '(lsp-vetur-use-workspace-dependencies t)
  '(magit-diff-use-overlays nil)
  '(nrepl-message-colors
    (quote

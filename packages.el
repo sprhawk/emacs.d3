@@ -110,7 +110,7 @@
   ;; yarn eslint --init
   ;; yarn add -D eslint-plugin-vue@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest
   ;; still not working with vue-language-server
-  ;; (vue-mode . lsp-deferred)
+  (vue-mode . lsp-deferred)
   )
 
 (use-package typescript-mode
