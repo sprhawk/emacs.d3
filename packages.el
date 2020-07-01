@@ -101,6 +101,9 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
+  :config
+  (add-to-list 'lsp-file-watch-ignored
+               "[/\\\\]vendor$")
   :hook
   (go-mode . lsp-deferred)
   (julia-mode . lsp-deferred)
