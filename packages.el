@@ -104,7 +104,9 @@
   :config
   (add-to-list 'lsp-file-watch-ignored
                "[/\\\\]vendor$")
-  :hook
+  (add-to-list 'lsp-file-watch-ignored
+               "[/\\\\]\\.yarn$")
+ :hook
   (go-mode . lsp-deferred)
   (julia-mode . lsp-deferred)
   ;; npm i -g typescript-language-server
