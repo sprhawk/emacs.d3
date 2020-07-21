@@ -59,6 +59,34 @@
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
+ '(safe-local-variable-values
+   (quote
+    ((eval lexical-let
+           ((project-directory
+             (car
+              (dir-locals-find-file default-directory))))
+           (set
+            (make-local-variable
+             (quote flycheck-javascript-eslint-executable))
+            (concat project-directory ".yarn/sdks/eslint/bin/eslint.js"))
+           (eval-after-load
+               (quote lsp-clients)
+             (quote
+              (progn
+                (plist-put lsp-deps-providers :local
+                           (list :path
+                                 (lambda
+                                   (path)
+                                   (concat project-directory ".yarn/sdks/" path)))))))
+           (lsp-dependency
+            (quote typescript-language-server)
+            (quote
+             (:local "typescript-language-server/lib/cli.js")))
+           (lsp-dependency
+            (quote typescript)
+            (quote
+             (:local "typescript/bin/tsserver"))))
+     (lsp-enabled-clients ts-ls eslint))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
