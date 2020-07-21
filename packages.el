@@ -298,10 +298,15 @@
   :mode ("\\.yaml\\'"
          "\\.yml'\\'"))
 
-;; need to install grip
+;; Make a keybinding: `C-c C-c g'
+(define-key markdown-mode-command-map (kbd "g") #'grip-mode)
+
+;; need to install grip `pip3 install grip`
 (use-package grip-mode
   :ensure t
-  :mode ("\\.md\\'"))
+  ;; :hook ((markdown-mode org-mode) . grip-mode)
+  :bind (:map markdown-mode-command-map
+              ("g" . grip-mode))) 
 
 (use-package realgud
   :ensure t)
