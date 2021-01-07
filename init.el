@@ -105,7 +105,10 @@
  ;; If there is more than one, they won't work right.
  )
 (global-set-key (kbd "C-c C-_") 'comment-or-uncomment-region)
-
+;; (global-set-key (kbd "C-x 0")
+;;                 (lambda ()
+;;                   (interactive)
+;;                   (other-window -1)))
 
 (global-set-key (kbd "C-x C-\\") 'set-input-method)
 (global-set-key (kbd "C-x v") 'view-buffer)
@@ -116,5 +119,6 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(setq-default js-indent-level 2)
 
 (set-face-foreground 'minibuffer-prompt "blue")
