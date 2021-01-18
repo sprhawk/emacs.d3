@@ -10,3 +10,4 @@ session.*
 semanticdb
 .lsp-session*
 quelpa
+.cache
