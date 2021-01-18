@@ -198,6 +198,9 @@
   (mmm-add-mode-ext-class 'js-mode nil 'graphql-tag)
   (mmm-add-mode-ext-class 'vue-mode nil 'graphql-tag))
 
+(use-package prettier
+  :ensure t)
+
 (use-package vue-mode
   :ensure t
   :mode ("\\.vue$" )
