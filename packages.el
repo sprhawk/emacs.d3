@@ -194,6 +194,7 @@
                       :face mmm-declaration-submode-face
                       :front "[^a-zA-Z]gql`"
                       :back "`")))
+  (mmm-add-mode-ext-class 'js-mode nil 'graphql-tag)
   (mmm-add-mode-ext-class 'vue-mode nil 'graphql-tag))
 
 (use-package vue-mode
