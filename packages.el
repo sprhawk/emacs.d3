@@ -188,6 +188,7 @@
   :init
   (setq mmm-global-mode 'maybe)
   :config
+  ;; https://vxlabs.com/2014/04/08/syntax-highlighting-markdown-fenced-code-blocks-in-emacs/
   ;; https://emacs.stackexchange.com/questions/37918/how-to-highlight-graphql-template-literals-gql-in-jsx-files
   (mmm-add-classes '((graphql-tag
                       :submode graphql-mode
