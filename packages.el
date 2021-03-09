@@ -201,14 +201,27 @@
 (use-package prettier
   :ensure t)
 
+(use-package pug-mode
+  :ensure t)
+
 (use-package vue-mode
   :ensure t
   :mode ("\\.vue$" )
   ;; fix for https://github.com/AdamNiederer/vue-mode/issues/74#issuecomment-528560608
-  :config
-  (setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
-  (setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil))))
+  ;; :config
+  ;; (setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+  ;; (setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+  ;; (add-hook 'js-mode-hook (lambda () (setq syntax-ppss-table nil)))
+  ;; (add-hook 'mmm-mode-hook (lambda () (set-face-background 'mmm-default-submode-face nil)))
+  )
+;; (setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+;; (setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+;; (add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
 
+;;  not fixed issue in vue-mode
+;; use prettier to format code by prettier-js on save
+(use-package prettier
+  :ensure t)
 (global-set-key (kbd "C-x g") 'magit-status)
 
 (global-display-line-numbers-mode)
