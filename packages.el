@@ -58,6 +58,25 @@
       (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
       (add-hook 'elpy-mode-hook 'flycheck-mode))))
 
+;; (global-set-key (kbd "C-x g") 'magit-status)
+
+;; setup project .dir-locals.el in Windows like following
+;; ((python-mode . ((conda-anaconda-home . "h:/anaconda3")
+;;                  (conda-env-home-directory . "h:/anaconda3")
+;;                  (conda-project-env-name . "bvh")
+;;                  (flycheck-python-flake8-executable . "python")
+;;                  (flycheck-python-pycompile-executable . "python")
+;;                  (flycheck-python-pylint-executable . "python")))
+;; )
+
+(use-package conda
+  :ensure t
+  :init
+  (conda-env-initialize-interactive-shells)
+  (conda-env-initialize-eshell)
+  (conda-env-autoactivate-mode t)
+  )
+  
 ;; don't know how to enable flycheck-mode with above method, so enable right now
 ;; (elpy-enable)
 
