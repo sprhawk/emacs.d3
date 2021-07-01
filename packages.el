@@ -146,9 +146,11 @@
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 1))
 
-(use-package company-lsp
-  :ensure t
-  :commands company-lsp)
+;; company-lsp has been removed, use lsp-mode instead
+;; (use-package company-lsp
+;;   :ensure t
+;;   :commands company-lsp)
+
 ;; lsp-ui-doc will block some
 ;; lsp-ui is annoying
 (use-package lsp-ui
