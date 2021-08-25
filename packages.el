@@ -179,7 +179,7 @@
 (use-package rustic
   :ensure t
   :init
-  (setq rustic-lsp-server 'rust-analyzer)
+  ;; (setq rustic-lsp-server 'rust-analyzer) ; this seems conflicting with rustic-lsp-format ?
   (setq rustic-format-on-save t)
   (setq rustic-lsp-format t)
   :hook
