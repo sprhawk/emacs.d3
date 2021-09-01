@@ -20,7 +20,10 @@
  package-archives '(("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                     ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
                     ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-                    ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")))
+                    ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
+                    ;; ("melpa" . "https://melpa.org/packages/")
+                    ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
+                    ))
 
 (package-initialize)
 (unless (package-installed-p 'use-package)
@@ -58,6 +61,25 @@
       (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
       (add-hook 'elpy-mode-hook 'flycheck-mode))))
 
+;; (global-set-key (kbd "C-x g") 'magit-status)
+
+;; setup project .dir-locals.el in Windows like following
+;; ((python-mode . ((conda-anaconda-home . "h:/anaconda3")
+;;                  (conda-env-home-directory . "h:/anaconda3")
+;;                  (conda-project-env-name . "bvh")
+;;                  (flycheck-python-flake8-executable . "python")
+;;                  (flycheck-python-pycompile-executable . "python")
+;;                  (flycheck-python-pylint-executable . "python")))
+;; )
+
+(use-package conda
+  :ensure t
+  :init
+  (conda-env-initialize-interactive-shells)
+  (conda-env-initialize-eshell)
+  (conda-env-autoactivate-mode t)
+  )
+  
 ;; don't know how to enable flycheck-mode with above method, so enable right now
 ;; (elpy-enable)
 
@@ -127,9 +149,11 @@
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 1))
 
-(use-package company-lsp
-  :ensure t
-  :commands company-lsp)
+;; company-lsp has been removed, use lsp-mode instead
+;; (use-package company-lsp
+;;   :ensure t
+;;   :commands company-lsp)
+
 ;; lsp-ui-doc will block some
 ;; lsp-ui is annoying
 (use-package lsp-ui
@@ -155,7 +179,7 @@
 (use-package rustic
   :ensure t
   :init
-  (setq rustic-lsp-server 'rust-analyzer)
+  ;; (setq rustic-lsp-server 'rust-analyzer) ; this seems conflicting with rustic-lsp-format ?
   (setq rustic-format-on-save t)
   (setq rustic-lsp-format t)
   :hook
