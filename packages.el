@@ -17,10 +17,10 @@
 ;;   )
 
 (setq
- package-archives '(("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                    ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-                    ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-                    ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
+ package-archives '(("gnu" . "http://elpa.emacs-china.org/gnu/")
+                    ;; ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+                    ("melpa" . "http://elpa.emacs-china.org/melpa/")
+                    ;; ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
                     ;; ("melpa" . "https://melpa.org/packages/")
                     ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
                     ))
