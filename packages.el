@@ -412,6 +412,9 @@
 
 (use-package php-mode
   :ensure t)
+
+(use-package erlang
+  :ensure t)
 ;; (setq jedi:environment-root "jedi")
 ;; (setq jedi:environment-virtualenv
 ;;       (append python-environment-virtualenv
