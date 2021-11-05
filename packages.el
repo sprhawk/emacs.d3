@@ -128,7 +128,7 @@
                "[/\\\\]vendor$")
   (add-to-list 'lsp-file-watch-ignored
                "[/\\\\]\\.yarn$")
- :hook
+  :hook
   (go-mode . lsp-deferred)
   (julia-mode . lsp-deferred)
   ;; npm i -g typescript-language-server
@@ -138,6 +138,7 @@
   ;; yarn add -D eslint-plugin-vue@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest
   ;; still not working with vue-language-server
   ;; (vue-mode . lsp-deferred)
+  (erlang-mode . lsp-deferred)
   )
 
 (use-package typescript-mode
@@ -414,7 +415,31 @@
   :ensure t)
 
 (use-package erlang
-  :ensure t)
+  :hook
+  (;; (erlang-mode . linum-mode)
+   (erlang-mode . column-number-mode)
+   )
+  :ensure t
+  :mode (("\\.erl?$" . erlang-mode)
+         ("rebar\\.config$" . erlang-mode)
+         ("relx\\.config$" . erlang-mode)
+         ("sys\\.config\\.src$" . erlang-mode)
+         ("\\.config\\.src?$" . erlang-mode)
+         ("\\.config.script?$" . erlang-mode)
+         ("\\.hrl?$" . erlang-mode)
+         ("\\.app?$" . erlang-mode)
+         ("\\.app.src?$" . erlang-mode)
+         ("\\Emakefile" . erlang-mode)
+         )
+  )
+
+(use-package lsp-origami
+  :hook
+  (
+   (origami-mode . lsp-origami)
+   (erlang-mode . origami-mode)
+   )
+  )
 ;; (setq jedi:environment-root "jedi")
 ;; (setq jedi:environment-virtualenv
 ;;       (append python-environment-virtualenv
