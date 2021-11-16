@@ -1,4 +1,5 @@
 (require 'package)
+(setq byte-compile-warnings '(cl-functions))
 
 ;; need to updateGPG keys used by ELPA package manager
 ;; refer to: https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html
@@ -17,13 +18,16 @@
 ;;   )
 
 (setq
- package-archives '(("gnu" . "https://elpa.emacs-china.org/gnu/")
-                    ("org" . "https://elpa.emacs-china.org/org/")
-                    ("melpa" . "https://elpa.emacs-china.org/melpa/")
-                    ("melpa-stable" . "https://elpa.emacs-china.org/melpa-stable/")
-                    ;; ("melpa" . "https://melpa.org/packages/")
-                    ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
+ package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                    ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+                    ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                    ;;                    ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
                     ))
+
+;(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+;			 ("org" . "https://orgmode.org/elpa/")
+;			 ("melpa" . "https://melpa.org/packages/")
+;			 ("melpa-stable" . "https://stable.melpa.org/packages/")))
 
 (package-initialize)
 (unless (package-installed-p 'use-package)
@@ -128,6 +132,11 @@
                "[/\\\\]vendor$")
   (add-to-list 'lsp-file-watch-ignored
                "[/\\\\]\\.yarn$")
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-tramp-connection "/usr/local/bin/erlang_ls")
+                    :major-modes '(erlang-mode)
+                    :remote? t
+                    :server-id 'erlang-remote))
   :hook
   (go-mode . lsp-deferred)
   (julia-mode . lsp-deferred)
