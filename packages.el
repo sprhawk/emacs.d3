@@ -267,7 +267,8 @@
 (use-package web-mode
   :ensure t
   :mode ("\\.html\\'"
-         "\\.djhtml\\'")
+         "\\.djhtml\\'"
+         "\\.heex\\'")
   :init
   (setq web-mode-engines-alist
         '(("django" . "\\.html\\'")))
@@ -433,6 +434,9 @@
          )
   )
 
+(use-package elixir-mode
+  :ensure t
+  )
 (use-package lsp-origami
   :hook
   (
