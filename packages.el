@@ -437,6 +437,10 @@
 (use-package elixir-mode
   :ensure t
   )
+(use-package csharp-mode
+  :ensure t
+  )
+
 (use-package lsp-origami
   :hook
   (
