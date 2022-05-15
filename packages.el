@@ -17,9 +17,9 @@
 ;;   )
 
 (setq
- package-archives '(("gnu" . "https://elpa.emacs-china.org/gnu/")
-                    ("org" . "https://elpa.emacs-china.org/org/")
-                    ("melpa" . "https://elpa.emacs-china.org/melpa/")
+ package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                    ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+                    ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
                     ("melpa-stable" . "https://elpa.emacs-china.org/melpa-stable/")
                     ;; ("melpa" . "https://melpa.org/packages/")
                     ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
