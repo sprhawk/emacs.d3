@@ -286,6 +286,10 @@
         '(("django" . "\\.html\\'")))
   (add-hook 'web-mode-hook
             (lambda() (local-set-key (kbd "C-c /") #'web-mode-element-close)))
+  :custom
+  (web-mode-markup-indent-offset 2)
+  (web-mode-css-indent-offset 2)
+  (web-mode-code-indent-offset 2)
   )
 
 ;; as creator of julia-repl commented (https://github.com/gcv/julia-snail/issues/1#issuecomment-597038660)
