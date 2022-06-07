@@ -179,7 +179,7 @@
   :ensure t
   :hook
   (((c-mode c++-mode objc-mode cuda-mode) .
-    (lambda () (require 'ccls) (lsp)))
+    (lambda () (require 'ccls) (lsp-deferred)))
    ((c-mode c++-mode objc-mode cuda-mode) . yas-minor-mode)))
 
 ;; install rust-analyser
