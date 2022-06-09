@@ -82,13 +82,13 @@
 ;;                  (flycheck-python-pylint-executable . "python")))
 ;; )
 
-(use-package conda
-  :ensure t
-  :init
-  (conda-env-initialize-interactive-shells)
-  (conda-env-initialize-eshell)
-  (conda-env-autoactivate-mode t)
-  )
+;; (use-package conda
+;;   :ensure t
+;;   :init
+;;   (conda-env-initialize-interactive-shells)
+;;   (conda-env-initialize-eshell)
+;;   (conda-env-autoactivate-mode t)
+;;   )
   
 ;; don't know how to enable flycheck-mode with above method, so enable right now
 ;; (elpy-enable)
