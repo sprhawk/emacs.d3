@@ -332,6 +332,24 @@
   :hook (julia-mode . julia-repl-mode) 
   )
 
+(use-package tree-sitter
+  :ensure t)
+(use-package tsi
+  :ensure t)
+(use-package origami
+  :ensure t)
+;; (use-package lsp-origami
+;;   :ensure t
+;;   :quelpa (lsp-origami :fetcher github :repo "emacs-lsp/lsp-origami"))
+(use-package lsp-origami
+  :ensure t)
+(use-package buttercup
+  :ensure t)
+(use-package tsi
+  :quelpa (tsi :fetcher github :repo "orzechowskid/tsi.el"))
+(use-package tsx-mode
+  :quelpa (tsx-mode :fetcher github :repo "orzechowskid/tsx-mode.el"))
+
 (use-package lispy
   :ensure t
   :hook
