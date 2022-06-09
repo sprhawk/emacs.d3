@@ -11,3 +11,5 @@ semanticdb
 .lsp-session*
 quelpa
 .cache
+tramp
+network-security.data
