@@ -18,12 +18,15 @@
 ;;   )
 
 (setq
- package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                    ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-                    ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-                    ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
-                    ;; ("melpa" . "https://melpa.org/packages/")
-                    ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
+ package-archives '(
+                    ;; ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                    ;; ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+                    ;; ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                    ;; ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
+                    ("gnu" . "https://elpa.gnu.org/packages/")
+                    ("org" . "https://orgmode.org/elpa/")
+                    ("melpa" . "https://melpa.org/packages/")
+                    ("melpa-stable" . "https://stable.melpa.org/packages/")
                     ;; ("melpa-stable" . "https://elpa.emacs-china.org/melpa-stable/")
                     ))
 
