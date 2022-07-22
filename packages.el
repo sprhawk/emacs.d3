@@ -513,6 +513,8 @@
   :ensure t)
 (use-package company
   :ensure t)
+(use-package hover
+  :ensure t)
 
 (use-package lsp-origami
   :hook
