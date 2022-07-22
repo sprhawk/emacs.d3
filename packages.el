@@ -175,6 +175,7 @@
   ;; still not working with vue-language-server
   ;; (vue-mode . lsp-deferred)
   (erlang-mode . lsp-deferred)
+  (dart-mode . lsp-deferred)
   )
 
 (use-package typescript-mode
@@ -498,6 +499,17 @@
 (use-package csharp-mode
   :ensure t
   )
+
+(use-package dart-mode
+  :ensure t)
+
+(use-package lsp-dart
+  :ensure t)
+
+(use-package lsp-treemacs
+  :ensure t)
+(use-package company
+  :ensure t)
 
 (use-package lsp-origami
   :hook
