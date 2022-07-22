@@ -245,6 +245,9 @@
 (use-package graphql-mode
   :ensure t)
 
+(use-package kconfig-mode
+  :ensure t)
+
 (use-package mmm-mode
   :ensure t
   :init
