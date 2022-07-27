@@ -123,6 +123,9 @@
   :ensure t
   :after (cmake-mode))
 
+(use-package dts-mode
+  :ensure t)
+
 (use-package flycheck
   :ensure t)
 
