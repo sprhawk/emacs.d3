@@ -4,6 +4,24 @@
 (setq packages (expand-file-name "~/.emacs.d/packages.el"))
 (load packages)
 
+(global-set-key (kbd "C-c C-_") 'comment-or-uncomment-region)
+;; (global-set-key (kbd "C-x 0")
+;;                 (lambda ()
+;;                   (interactive)
+;;                   (other-window -1)))
+
+(global-set-key (kbd "C-x C-\\") 'set-input-method)
+(global-set-key (kbd "C-x v") 'view-buffer)
+
+(define-key key-translation-map (kbd "C-c p") (kbd "π"))
+(define-key key-translation-map (kbd "C-c a") (kbd "α"))
+(define-key key-translation-map (kbd "C-c d") (kbd "Δ"))
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq-default js-indent-level 2)
+
+;; (set-face-foreground 'minibuffer-prompt "blue")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -20,7 +38,7 @@
  '(cua-read-only-cursor-color "#859900")
  '(custom-enabled-themes '(afternoon))
  '(custom-safe-themes
-   '("2540689fd0bc5d74c4682764ff6c94057ba8061a98be5dd21116bf7bf301acfb" "d91ef4e714f05fff2070da7ca452980999f5361209e679ee988e3c432df24347" "0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "54f2d1fcc9bcadedd50398697618f7c34aceb9966a6cbaa99829eb64c0c1f3ca" "fad9c3dbfd4a889499f6921f54f68de8857e6846a0398e89887dbe5f26b591c0" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default))
+   '("57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" "2540689fd0bc5d74c4682764ff6c94057ba8061a98be5dd21116bf7bf301acfb" "d91ef4e714f05fff2070da7ca452980999f5361209e679ee988e3c432df24347" "0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "54f2d1fcc9bcadedd50398697618f7c34aceb9966a6cbaa99829eb64c0c1f3ca" "fad9c3dbfd4a889499f6921f54f68de8857e6846a0398e89887dbe5f26b591c0" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default))
  '(highlight-changes-colors '("#d33682" "#6c71c4"))
  '(highlight-symbol-colors
    (--map
@@ -88,21 +106,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(global-set-key (kbd "C-c C-_") 'comment-or-uncomment-region)
-;; (global-set-key (kbd "C-x 0")
-;;                 (lambda ()
-;;                   (interactive)
-;;                   (other-window -1)))
-
-(global-set-key (kbd "C-x C-\\") 'set-input-method)
-(global-set-key (kbd "C-x v") 'view-buffer)
-
-(define-key key-translation-map (kbd "C-c p") (kbd "π"))
-(define-key key-translation-map (kbd "C-c a") (kbd "α"))
-(define-key key-translation-map (kbd "C-c d") (kbd "Δ"))
-
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq-default js-indent-level 2)
-
-(set-face-foreground 'minibuffer-prompt "blue")
