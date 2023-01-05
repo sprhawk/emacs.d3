@@ -326,12 +326,13 @@
 ;; as creator of julia-repl commented (https://github.com/gcv/julia-snail/issues/1#issuecomment-597038660)
 ;; julia-repl shall be replaced by something   
 ;; Julia-snail usage is not tested yet
-;; (use-package vterm
-;;   :ensure t)
-;; (use-package julia-snail
-;;   :ensure t
-;;   :hook
-;;   (julia-mode . julia-snail-mode))
+(use-package vterm
+  :ensure t)
+(use-package julia-snail
+  :ensure t
+  :hook
+  (julia-mode . julia-snail-mode))
+
 
 (use-package lsp-julia
   :quelpa (lsp-julia
@@ -358,10 +359,10 @@
   :hook
   (julia-mode . customize-julia-mode))
 
-(use-package julia-repl
-  :ensure t
-  :hook (julia-mode . julia-repl-mode) 
-  )
+;; (use-package julia-repl
+;;   :ensure t
+;;   :hook (julia-mode . julia-repl-mode) 
+;;   )
 
 (use-package tree-sitter
   :ensure t)
@@ -526,6 +527,10 @@
    (erlang-mode . origami-mode)
    )
   )
+
+(use-package lua-mode
+  :ensure t)
+
 ;; (setq jedi:environment-root "jedi")
 ;; (setq jedi:environment-virtualenv
 ;;       (append python-environment-virtualenv
