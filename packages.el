@@ -137,10 +137,9 @@
   :ensure t
   :commands (lsp lsp-deferred)
   :config
-  (add-to-list 'lsp-file-watch-ignored
-               "[/\\\\]vendor$")
-  (add-to-list 'lsp-file-watch-ignored
-               "[/\\\\]\\.yarn$")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories  "[/\\\\]\\.yarn\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]build\\'")
   (with-eval-after-load "rustic-mode"
     (lsp-register-client
      (make-lsp-client
