@@ -378,8 +378,8 @@
   :ensure t)
 (use-package tsi
   :quelpa (tsi :fetcher github :repo "orzechowskid/tsi.el"))
-(use-package tsx-mode
-  :quelpa (tsx-mode :fetcher github :repo "orzechowskid/tsx-mode.el"))
+;; (use-package tsx-mode
+;;   :quelpa (tsx-mode :fetcher github :repo "orzechowskid/tsx-mode.el"))
 
 (use-package lispy
   :ensure t
