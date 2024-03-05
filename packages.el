@@ -568,6 +568,12 @@
 ;; (add-to-list 'auto-mode-alist '("\\.bbclass$" . bb-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.conf$" . bb-mode))
 
-(when (executable-find "ipython")
-  (setq python-shell-interpreter "ipython")
-  (setq python-shell-interpreter-args "-i --simple-prompt"))
+(use-package python-mode
+  :ensure t
+  :config
+  (when (executable-find "ipython")
+    (setq python-shell-interpreter "ipython")
+    (setq python-shell-interpreter-args "-i --simple-prompt")))
+
+
+
