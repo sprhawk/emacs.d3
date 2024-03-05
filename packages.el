@@ -418,15 +418,14 @@
   :bind (:map markdown-mode-command-map
               ("g" . grip-mode))) 
 
-(use-package realgud
-  :ensure t)
-
-(use-package realgud-lldb
-  :after (realgud)
-  :ensure t)
 ;; (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
 ;; (require 'julia-repl)
 ;; (add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
+; (use-package realgud
+;   :ensure t)
+; (use-package realgud-lldb
+;   :after (realgud)
+;   :ensure t)
 
 
 (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
