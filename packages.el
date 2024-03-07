@@ -140,6 +140,9 @@
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'")
   (add-to-list 'lsp-file-watch-ignored-directories  "[/\\\\]\\.yarn\\'")
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]build\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]target\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]tests\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]ci\\'")
   (with-eval-after-load "rustic-mode"
     (lsp-register-client
      (make-lsp-client
