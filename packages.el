@@ -54,6 +54,56 @@
    ))
 (require 'quelpa-use-package)
 
+;; elixir related conf from:
+;; https://medium.com/@victor.nascimento/elixir-emacs-development-2023-edition-1a6ccc40629
+;; not well working
+(use-package emacs
+  :ensure nil
+  :custom
+
+  (major-mode-remap-alist
+   '((elixir-mode . elixir-ts-mode))))
+
+(setq treesit-language-source-alist
+      '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+        (cmake "https://github.com/uyha/tree-sitter-cmake")
+        (css "https://github.com/tree-sitter/tree-sitter-css")
+        (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+        (go "https://github.com/tree-sitter/tree-sitter-go")
+        (html "https://github.com/tree-sitter/tree-sitter-html")
+        (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+        (json "https://github.com/tree-sitter/tree-sitter-json")
+        (make "https://github.com/alemuller/tree-sitter-make")
+        (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+        (python "https://github.com/tree-sitter/tree-sitter-python")
+        (toml "https://github.com/tree-sitter/tree-sitter-toml")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml")
+        (heex "https://github.com/phoenixframework/tree-sitter-heex")
+        (elixir "https://github.com/elixir-lang/tree-sitter-elixir")))
+
+(use-package eglot
+  :ensure nil
+  :config (add-to-list 'eglot-server-programs `((elixir-ts-mode heex-ts-mode) "/home/hongbo/.local/elixir-ls/language_server.sh")))
+
+(use-package
+ elixir-ts-mode
+ :hook (elixir-ts-mode . eglot-ensure)
+ (elixir-ts-mode
+  .
+  (lambda ()
+    (push '(">=" . ?\u2265) prettify-symbols-alist)
+    (push '("<=" . ?\u2264) prettify-symbols-alist)
+    (push '("!=" . ?\u2260) prettify-symbols-alist)
+    (push '("==" . ?\u2A75) prettify-symbols-alist)
+    (push '("=~" . ?\u2245) prettify-symbols-alist)
+    (push '("<-" . ?\u2190) prettify-symbols-alist)
+    (push '("->" . ?\u2192) prettify-symbols-alist)
+    (push '("<-" . ?\u2190) prettify-symbols-alist)
+    (push '("|>" . ?\u25B7) prettify-symbols-alist)))
+ (before-save . eglot-format))
+
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status))
@@ -105,17 +155,6 @@
   (load-theme 'afternoon t))
 
 ;; (setq inferior-lisp-program "sbcl")
-
-;; (use-package rust-mode
-;;   :ensure t
-;;   :init
-;;   (setq rust-format-on-save t)
-;;   ;; :hook
-;;   ;; ((rust-mode . racer-mode)
-;;   ;;  (racer-mode . eldoc-mode)
-;;   ;;  (racer-mode . company-mode)
-;;   ;;  )
-;;   :mode ("\\.rs\\'" ))
 
 (use-package cmake-mode
   :ensure t)
@@ -181,6 +220,7 @@
   ;; (vue-mode . lsp-deferred)
   (erlang-mode . lsp-deferred)
   (dart-mode . lsp-deferred)
+  (rust-mode . lsp-deferred)
   )
 
 (use-package typescript-mode
@@ -219,20 +259,31 @@
 ;; cd rust-analyzer
 ;; cargo xtask install
 
-(use-package rustic
+(use-package rust-mode
   :ensure t
   :init
-  ;; (setq rustic-lsp-server 'rust-analyzer) ; this seems conflicting with rustic-lsp-format ?
-  (setq rustic-format-on-save t)
-  (setq rustic-lsp-format t)
-  :hook
-  (('rustic-mode . 'yas-minor-mode))
-  ;; :bind (("C-c C-b" . 'rustic-cargo-build)
-  ;;        ("C-c C-k" . 'rustic-cargo-clean)
-  ;;        ("C-c C-r" . 'rustic-cargo-run)
-  ;;        ("C-c C-f" . 'rustic-format-buffer)
-  ;;        ("C-c C-e" . 'lsp-rust-analyzer-expand-macro))
-  )
+  (setq rust-format-on-save t)
+  ;; :hook
+  ;; ((rust-mode . racer-mode)
+  ;;  (racer-mode . eldoc-mode)
+  ;;  (racer-mode . company-mode)
+  ;;  )
+  :mode ("\\.rs\\'" ))
+
+;; (use-package rustic
+;;   :ensure t
+;;   :init
+;;   ;; (setq rustic-lsp-server 'rust-analyzer) ; this seems conflicting with rustic-lsp-format ?
+;;   (setq rustic-format-on-save t)
+;;   (setq rustic-lsp-format t)
+;;   :hook
+;;   (('rustic-mode . 'yas-minor-mode))
+;;   ;; :bind (("C-c C-b" . 'rustic-cargo-build)
+;;   ;;        ("C-c C-k" . 'rustic-cargo-clean)
+;;   ;;        ("C-c C-r" . 'rustic-cargo-run)
+;;   ;;        ("C-c C-f" . 'rustic-format-buffer)
+;;   ;;        ("C-c C-e" . 'lsp-rust-analyzer-expand-macro))
+;;   )
 
 ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
 (defun lsp-go-install-save-hooks ()
@@ -312,8 +363,7 @@
 (use-package web-mode
   :ensure t
   :mode ("\\.html\\'"
-         "\\.djhtml\\'"
-         "\\.heex\\'")
+         "\\.djhtml\\'")
   :init
   (setq web-mode-engines-alist
         '(("django" . "\\.html\\'")))
@@ -368,8 +418,8 @@
 
 (use-package tree-sitter
   :ensure t)
-(use-package tsi
-  :ensure t)
+;; (use-package tsi
+;;   :ensure t)
 (use-package origami
   :ensure t)
 ;; (use-package lsp-origami
@@ -377,8 +427,8 @@
 ;;   :quelpa (lsp-origami :fetcher github :repo "emacs-lsp/lsp-origami"))
 (use-package lsp-origami
   :ensure t)
-(use-package buttercup
-  :ensure t)
+;; (use-package buttercup
+;;   :ensure t)
 (use-package tsi
   :quelpa (tsi :fetcher github :repo "orzechowskid/tsi.el"))
 ;; (use-package tsx-mode
@@ -421,14 +471,15 @@
   :bind (:map markdown-mode-command-map
               ("g" . grip-mode))) 
 
-;; (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
-;; (require 'julia-repl)
-;; (add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
 ; (use-package realgud
 ;   :ensure t)
+; 
 ; (use-package realgud-lldb
 ;   :after (realgud)
 ;   :ensure t)
+; ;; (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
+; ;; (require 'julia-repl)
+; ;; (add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
 
 
 (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
@@ -501,12 +552,12 @@
          )
   )
 
-(use-package elixir-mode
-  :ensure t
-  )
-(use-package csharp-mode
-  :ensure t
-  )
+;; (use-package elixir-ts-mode
+;;   :ensure t
+;;   )
+;; (use-package csharp-mode
+;;   :ensure t
+;;   )
 
 (use-package dart-mode
   :ensure t)
