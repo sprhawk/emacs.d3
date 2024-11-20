@@ -68,7 +68,7 @@
  '(nrepl-message-colors
    '("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4"))
  '(package-selected-packages
-   '(python-mode realgud-ipdb julia-snail vterm lua-mode prettier emacsql-sqlite3 quelpa-use-package lsp-julia quelpa ack gnu-elpa-keyring-update protobuf-mode graphql-mode lsp-ui go-mode cmake-font-lock ccls company-lsp lsp-mode grip-mode afternoon-theme lispy rust-mode vue-mode octave-mode tidal julia-repl color-theme-sanityinc-tomorrow zenburn-theme tango-2-theme dracula-theme julia-mode web-mode jinja2-mode flycheck elpy php-mode git scss-mode django-snippets django-mode sass-mode json-mode docker-compose-mode dockerfile-mode yaml-mode ensime ecb magit company racer slime))
+   '(vhdl-ts-mode python-mode realgud-ipdb julia-snail vterm lua-mode prettier emacsql-sqlite3 quelpa-use-package lsp-julia quelpa ack gnu-elpa-keyring-update protobuf-mode graphql-mode lsp-ui go-mode cmake-font-lock ccls company-lsp lsp-mode grip-mode afternoon-theme lispy rust-mode vue-mode octave-mode tidal julia-repl color-theme-sanityinc-tomorrow zenburn-theme tango-2-theme dracula-theme julia-mode web-mode jinja2-mode flycheck elpy php-mode git scss-mode django-snippets django-mode sass-mode json-mode docker-compose-mode dockerfile-mode yaml-mode ensime ecb magit company racer slime))
  '(pdf-view-midnight-colors '("#DCDCCC" . "#383838"))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
