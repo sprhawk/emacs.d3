@@ -13,3 +13,7 @@ quelpa
 .cache
 tramp
 network-security.data
+tree-sitter
+*.swp
+eln-cache
+.dap-breakpoints
